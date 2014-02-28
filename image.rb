@@ -29,15 +29,11 @@ class Image
   end
 
   def h(x, y1, y2, color)
-    for i in (y1..y2) do
-      l(x, i, color)
-    end
+    (y1..y2).each {|i| l(x, i, color)}
   end
 
   def v(y, x1, x2, color)
-    for i in (x1..x2) do 
-      l(i, y, color)
-    end
+    (x1..x2).each {|i| l(i, y, color)}
   end
 
   def f(x, y, final_color)
