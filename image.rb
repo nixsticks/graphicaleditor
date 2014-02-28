@@ -9,7 +9,7 @@ class Image
   def initialize(x, y)
     @x = x
     @y = y
-    self.c
+    c
   end
 
   def [](x, y)
@@ -30,13 +30,13 @@ class Image
 
   def h(x, y1, y2, color)
     for i in (y1..y2) do
-      self[x, i] = color if exists?(x, i)
+      l(x, i, color) if exists?(x, i)
     end
   end
 
   def v(y, x1, x2, color)
     for i in (x1..x2) do 
-      self[i, y] = color if exists?(i, y)
+      l(i, y, color) if exists?(i, y)
     end
   end
 
@@ -50,7 +50,7 @@ class Image
     l(x, y, final_color)
 
     collect_neighbors(x, y).each do |location|
-      self.flood(location[0],location[1], initial_color, final_color)
+      flood(location[0],location[1], initial_color, final_color)
     end
   end
 
