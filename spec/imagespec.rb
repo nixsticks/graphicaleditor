@@ -53,14 +53,14 @@ describe Image do
   describe '#fill' do
     it 'should fill the region R with the color C' do
       image.l(1, 1, "R")
-      image.l(2, 1, "R")
+      image.v(3, 1, 5, "R")
 
-      image.f(3, 1, "B")
+      image.f(2, 1, "B")
 
       expect(image[1, 1]).to eq("R")
-      expect(image[3, 5]).to eq("B")
-      expect(image[4, 5]).to eq("B")
-      expect(image[5, 5]).to eq("B")
+      expect(image[2, 2]).to eq("B")
+      expect(image[4, 5]).to eq("O")
+      expect(image[5, 5]).to eq("O")
     end
   end
 end
