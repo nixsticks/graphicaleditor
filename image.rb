@@ -41,7 +41,7 @@ class Image
   end
 
   def flood(x, y, initial_color, final_color)
-    return if self[x, y] != initial_color || self[x, y] == final_color || !exists?(x, y)
+    return if self[x, y] != initial_color || self[x, y] == final_color
 
     l(x, y, final_color)
 
