@@ -30,22 +30,22 @@ class Image
 
   def h(x, y1, y2, color)
     for i in (y1..y2) do
-      l(x, i, color) if exists?(x, i)
+      l(x, i, color)
     end
   end
 
   def v(y, x1, x2, color)
     for i in (x1..x2) do 
-      l(i, y, color) if exists?(i, y)
+      l(i, y, color)
     end
   end
 
   def f(x, y, final_color)
-    flood(x, y, self[x,y], final_color) if exists?(x, y)
+    flood(x, y, self[x,y], final_color)
   end
 
   def flood(x, y, initial_color, final_color)
-    return if self[x, y] != initial_color || self[x, y] == final_color
+    return if self[x, y] != initial_color || self[x, y] == final_color || self[x, y].nil?
 
     l(x, y, final_color)
 
