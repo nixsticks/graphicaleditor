@@ -22,28 +22,17 @@ class Editor
     case line
     when /^i (\d+) (\d+)$/
       @image = Image.new($2.to_i, $1.to_i)
-    when /^(c)$/
+    when /^([cs])$/
       image.send($1)
     when /^([lf]) (\d+) (\d+) ([a-z])$/
       image.send($1, $3.to_i, $2.to_i, $4.upcase)
     when /^([vh]) (\d+) (\d+) (\d+) ([a-z])$/
-       image.send($1, $2.to_i, $3.to_i, $4.to_i, $5.upcase)
-    when /^s$/
-      draw
+      image.send($1, $2.to_i, $3.to_i, $4.to_i, $5.upcase)
     when /^x$/
       exit
     else
       puts "Sorry, I didn't understand your input."
     end
-  end
-
-  def draw
-    puts
-    image.pixels.to_a.each do |row|
-      row.each {|pixel| print pixel + " "}
-      puts
-    end
-    puts
   end
 
   def self.input

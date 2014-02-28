@@ -66,4 +66,13 @@ class Image
   def exists?(x, y)
     x >= 1 && y >= 1 && x <= @x && y <= @y
   end
+
+  def s
+    puts
+    pixels.to_a.each do |row|
+      row.each {|pixel| print pixel + " "}
+      puts
+    end
+    puts
+  end
 end
