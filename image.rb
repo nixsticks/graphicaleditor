@@ -6,7 +6,7 @@ class Image
 
   NEIGHBORS = [[0,-1], [0,1], [-1,0], [1,0], [-1,-1], [1,-1], [-1,1], [1,1]]
 
-  def initialize(x, y, color="O")
+  def initialize(x, y)
     @x = x
     @y = y
     self.clear
