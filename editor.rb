@@ -22,27 +22,18 @@ class Editor
     case line
     when /^i (\d+) (\d+)$/
       @image = Image.new($2.to_i, $1.to_i)
-    when /^([cs])$/
-      $1 == "c" ? image.clear : draw
+    when /^(c)$/
+      image.send($1)
     when /^([lf]) (\d+) (\d+) ([a-z])$/
-      $1 == "l" ? check_position(:color, $3.to_i, $2.to_i, $4.upcase) : check_position(:fill, $3.to_i, $2.to_i, $4.upcase)
+      image.send($1, $3.to_i, $2.to_i, $4.upcase)
     when /^([vh]) (\d+) (\d+) (\d+) ([a-z])$/
-       $1 == "v" ? check_position(:vertical, $2.to_i, $3.to_i, $4.to_i, $5.upcase) : check_position(:horizontal, $2.to_i, $3.to_i, $4.to_i, $5.upcase)
+       image.send($1, $2.to_i, $3.to_i, $4.to_i, $5.upcase)
+    when /^s$/
+      draw
     when /^x$/
       exit
     else
       puts "Sorry, I didn't understand your input."
-    end
-  end
-
-  def check_position(command, *args)
-    x = args[0]
-    y = args[1]
-
-    if x >= 0 && x <= image.x && y >= 0 && y <= image.y
-      image.send(command, *args)
-    else
-      puts "Coordinates out of bounds."
     end
   end
 

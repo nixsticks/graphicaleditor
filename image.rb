@@ -9,7 +9,7 @@ class Image
   def initialize(x, y)
     @x = x
     @y = y
-    self.clear
+    self.c
   end
 
   def [](x, y)
@@ -20,34 +20,34 @@ class Image
     pixels[x-1, y-1] = value
   end
 
-  def clear
+  def c
     @pixels = Matrix.build(x,y) { "O" }
   end
 
-  def color(x, y, color)
-    self[x, y] = color
+  def l(x, y, color)
+    self[x, y] = color if exists?(x, y)
   end
 
-  def horizontal(x, y1, y2, color)
+  def h(x, y1, y2, color)
     for i in (y1..y2) do
-      self[x, i] = color
+      self[x, i] = color if exists?(x, i)
     end
   end
 
-  def vertical(y, x1, x2, color)
+  def v(y, x1, x2, color)
     for i in (x1..x2) do 
-      self[i, y] = color
+      self[i, y] = color if exists?(i, y)
     end
   end
 
-  def fill(x, y, final_color)
-    flood(x, y, self[x,y], final_color)
+  def f(x, y, final_color)
+    flood(x, y, self[x,y], final_color) if exists?(x, y)
   end
 
   def flood(x, y, initial_color, final_color)
     return if self[x, y] != initial_color || self[x, y] == final_color
 
-    color(x, y, final_color)
+    l(x, y, final_color)
 
     collect_neighbors(x, y).each do |location|
       self.flood(location[0],location[1], initial_color, final_color)
@@ -64,6 +64,6 @@ class Image
   end
 
   def exists?(x, y)
-    x >= 1 && y >= 1
+    x >= 1 && y >= 1 && x <= @x && y <= @y
   end
 end
