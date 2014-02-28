@@ -29,11 +29,11 @@ class Image
   end
 
   def h(x, y1, y2, color)
-    (y1..y2).each {|i| l(x, i, color) if exists?(x, i)}
+    (y1..y2).each {|i| l(x, i, color)}
   end
 
   def v(y, x1, x2, color)
-    (x1..x2).each {|i| l(i, y, color) if exists?(i, y)}
+    (x1..x2).each {|i| l(i, y, color)}
   end
 
   def f(x, y, final_color)
@@ -41,7 +41,7 @@ class Image
   end
 
   def flood(x, y, initial_color, final_color)
-    return if self[x, y] != initial_color || self[x, y] == final_color || !exists?(x, y)
+    return if self[x, y] != initial_color || self[x, y] == final_color
 
     l(x, y, final_color)
 
