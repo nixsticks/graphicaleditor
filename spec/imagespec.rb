@@ -1,9 +1,8 @@
-require '../image'
-require '../matrix'
+require_relative '../image'
+require_relative '../matrix'
 
 describe Image do
   let(:image) { Image.new(5,6) }
-  let(:red_image) { Image.new(5,6,"R") }
 
   describe '#initialize' do
     it 'should create an image with the correct dimensions' do
@@ -18,9 +17,10 @@ describe Image do
 
   describe '#clear' do
     it 'should set all pixels to white' do
-      red_image.clear
+      image.fill(1, 1, "R")
+      image.clear
 
-      expect(red_image[2,3]).to eq("O")
+      expect(image[2,3]).to eq("O")
     end
   end
 

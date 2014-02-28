@@ -1,3 +1,5 @@
+require 'matrix'
+
 class Image
   attr_reader :x, :y
   attr_accessor :pixels

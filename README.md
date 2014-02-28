@@ -28,3 +28,4 @@ The editor supports 7 commands:
 To Run:
 ===============
 In the terminal: ruby run.rb
+To run spec: rspec spec/imagespec.rb
