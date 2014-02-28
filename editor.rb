@@ -2,7 +2,20 @@ class Editor
   attr_accessor :image
 
   def welcome
-    puts "Welcome to the image editor!"
+    puts <<-end
+    Welcome to the image editor!
+    
+    Commands:
+    I M N : Create a new MxN image with all pixels colored white (O).
+    C. Clears the table, setting all pixels to white (O).
+    L X Y C. Colors the pixel (X,Y) with color C.
+    V X Y1 Y2 C. Draw a vertical segment of color C in column X between rows Y1 and Y2 (inclusive).
+    H X1 X2 Y C. Draw a horizontal segment of color C in row Y between columns X1 and X2 (inclusive).
+    F X Y C. Fill the region R with the color C. R is defined as: Pixel (X,Y) belongs to R. Any other pixel which is the same color as (X,Y) and shares a common side with any pixel in R also belongs to this region.
+    S. Show the contents of the current image.
+    X. Terminate the session.
+
+    end
   end
 
   def command(line)
