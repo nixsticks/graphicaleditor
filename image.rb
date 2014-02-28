@@ -29,11 +29,11 @@ class Image
   end
 
   def h(x, y1, y2, color)
-    (y1..y2).each {|i| l(x, i, color)}
+    (y1..y2).each {|i| l(x, i, color) if exists?(x, i)}
   end
 
   def v(y, x1, x2, color)
-    (x1..x2).each {|i| l(i, y, color)}
+    (x1..x2).each {|i| l(i, y, color) if exists?(i, y)}
   end
 
   def f(x, y, final_color)
@@ -60,7 +60,7 @@ class Image
   end
 
   def exists?(x, y)
-    x >= 1 && y >= 1 && x <= @x + 1 && y <= @y + 1
+    x >= 1 && y >= 1 && x <= @x && y <= @y
   end
 
   def s
